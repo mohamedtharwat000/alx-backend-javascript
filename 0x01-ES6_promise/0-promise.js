@@ -1,7 +1,5 @@
 export default function getResponseFromAPI() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     resolve('Success!');
   });
 }
-const response = getResponseFromAPI();
-console.log(response instanceof Promise);
