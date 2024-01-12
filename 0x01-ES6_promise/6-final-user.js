@@ -5,8 +5,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([
     signUpUser(firstName, lastName),
     uploadPhoto(fileName),
-  ]).then((results) => results.map(({ status, value }) => ({
-    status,
-    value: String(value),
-  })));
+  ]).then((results) => results.map((result) => {
+    if (result.status === 'rejected') {
+      return { status: result.status, reason: result.reason };
+    }
+    return result;
+  }));
 }
