@@ -10,4 +10,3 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     value: String(value),
   })));
 }
-console.log(handleProfileSignup('Bob', 'Dylan', 'bob_dylan.jpg'));
