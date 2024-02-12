@@ -27,10 +27,10 @@ export default class HolbertonClass {
   }
 
   valueOf() {
-    return this._size;
+    return this.size;
   }
 
-  tostring() {
-    return this._location;
+  toString() {
+    return this.location;
   }
 }
