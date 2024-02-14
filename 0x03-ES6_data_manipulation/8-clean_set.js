@@ -1,6 +1,6 @@
-export default function cleanSet(set, startString) {
+export default function cleanSet(set, str) {
   return Array.from(set)
-    .filter((val) => val.startsWith(startString) && startString !== '')
-    .map((val) => val.slice(startString.length))
+    .filter((e) => e.startsWith(str) && str !== '')
+    .map((e) => e.slice(str.length))
     .join('-');
 }
