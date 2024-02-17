@@ -1,8 +1,7 @@
-import { Subjects } from './subjects/Teacher';
-
-export const cpp = new Subjects.Cpp();
-export const java = new Subjects.Java();
-export const react = new Subjects.React();
+/// <reference path="./subjects/Subject.ts" />
+export const cpp: Subjects.Cpp = new Subjects.Cpp();
+export const java: Subjects.Java = new Subjects.Java();
+export const react: Subjects.React = new Subjects.React();
 
 export const cTeacher: Subjects.Teacher = {
   firstName: 'John',
