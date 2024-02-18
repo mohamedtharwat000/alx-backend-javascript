@@ -4,6 +4,10 @@ namespace Subjects {
   }
 
   export class Cpp extends Subject {
+    public constructor(_teacher?: Teacher) {
+      super(_teacher);
+    }
+
     public getRequirements(): string {
       return 'Here is the list of requirements for Cpp';
     }

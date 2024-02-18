@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
+    "outFile": "./dist/bundle.js",
     "sourceMap": true,
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "system",
     "target": "es5",
     "allowJs": true,
     "moduleResolution": "node",
