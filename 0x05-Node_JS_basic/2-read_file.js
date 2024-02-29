@@ -1,6 +1,6 @@
 const { readFileSync, existsSync } = require('node:fs');
 
-function countStudents(path) {
+module.exports = function countStudents(path) {
   if (!existsSync(path)) throw new Error('Cannot load the database');
   const file = readFileSync(path, 'utf-8');
   const data = file.split('\n').map((row) => row.split(','));
@@ -19,6 +19,4 @@ function countStudents(path) {
       `Number of students in ${field}: ${students.length}. List: ${studentNames}`,
     );
   });
-}
-
-countStudents('database.csv');
+};
