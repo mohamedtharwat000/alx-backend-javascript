@@ -18,15 +18,15 @@ class StudentsController {
 
         res.end();
       })
-      .catch(() => {
-        res.status(500).send('Cannot load the database');
+      .catch((err) => {
+        res.status(500).send(err.message);
       });
   }
 
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
     if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE');
+      res.status(500).send('Major parameter must be CS or SWE\n');
     }
 
     readDatabase('../../database.csv')
@@ -35,8 +35,8 @@ class StudentsController {
           res.send(`List: ${data[major].join(', ')}`);
         }
       })
-      .catch(() => {
-        res.status(500).send('Cannot load the database');
+      .catch((err) => {
+        res.status(500).send(err.message);
       });
   }
 }

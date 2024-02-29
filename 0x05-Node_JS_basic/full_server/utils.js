@@ -17,7 +17,7 @@ async function readDatabase(path) {
 
     return fields;
   } catch (error) {
-    throw new Error('Cannot load the database');
+    throw new Error('Cannot load the database\n');
   }
 }
 
