@@ -4,7 +4,7 @@ class StudentsController {
   static async getAllStudents(req, res) {
     readDatabase(process.argv[2])
       .then((data) => {
-        res.write('This is the list of our students');
+        res.write('This is the list of our students\n');
 
         Object.keys(data)
           .sort((a, b) => a.localeCompare(b))
@@ -12,7 +12,7 @@ class StudentsController {
             const studentsNumber = data[field].length;
             const studentList = data[field].join(', ');
             res.write(
-              `\nNumber of students in ${field}: ${studentsNumber}. List: ${studentList}`,
+              `Number of students in ${field}: ${studentsNumber}. List: ${studentList}\n`,
             );
           });
 
@@ -26,7 +26,7 @@ class StudentsController {
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
     if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE');
+      res.status(500).send('Major parameter must be CS or SWE\n');
     }
 
     readDatabase(process.argv[2])
