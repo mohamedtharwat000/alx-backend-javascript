@@ -2,9 +2,9 @@ const { readDatabase } = require('../utils');
 
 class StudentsController {
   static async getAllStudents(req, res) {
-    readDatabase('../../database.csv')
+    readDatabase(process.argv[2])
       .then((data) => {
-        res.write('This is the list of our students\n');
+        res.write('This is the list of our students');
 
         Object.keys(data)
           .sort((a, b) => a.localeCompare(b))
@@ -12,7 +12,7 @@ class StudentsController {
             const studentsNumber = data[field].length;
             const studentList = data[field].join(', ');
             res.write(
-              `Number of students in ${field}: ${studentsNumber}. List: ${studentList}\n`,
+              `\nNumber of students in ${field}: ${studentsNumber}. List: ${studentList}`,
             );
           });
 
@@ -26,14 +26,12 @@ class StudentsController {
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
     if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE\n');
+      res.status(500).send('Major parameter must be CS or SWE');
     }
 
-    readDatabase('../../database.csv')
+    readDatabase(process.argv[2])
       .then((data) => {
-        if (data[major]) {
-          res.send(`List: ${data[major].join(', ')}`);
-        }
+        if (data[major]) res.send(`List: ${data[major].join(', ')}`);
       })
       .catch((err) => {
         res.status(500).send(err.message);
