@@ -16,7 +16,7 @@ function readDatabase(path) {
         resolve(fields);
       })
       .catch(() => {
-        reject(new Error('Cannot load the database'));
+        reject(new Error('Cannot load the database\n'));
       });
   });
 }
