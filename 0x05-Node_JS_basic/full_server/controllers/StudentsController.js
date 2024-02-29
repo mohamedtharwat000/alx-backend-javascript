@@ -1,4 +1,4 @@
-const { readDatabase } = require('../utils');
+const readDatabase = require('../utils');
 
 class StudentsController {
   static async getAllStudents(req, res) {
@@ -26,7 +26,7 @@ class StudentsController {
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
     if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE\n');
+      res.status(500).send('Major parameter must be CS or SWE');
     }
 
     readDatabase(process.argv[2])
