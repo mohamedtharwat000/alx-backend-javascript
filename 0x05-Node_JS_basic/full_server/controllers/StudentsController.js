@@ -16,7 +16,7 @@ class StudentsController {
             );
           });
 
-        res.status(200).end();
+        res.end();
       })
       .catch(() => {
         res.status(500).send('Cannot load the database');
@@ -32,7 +32,7 @@ class StudentsController {
     readDatabase('../../database.csv')
       .then((data) => {
         if (data[major]) {
-          res.status(200).send(`List: ${data[major].join(', ')}`);
+          res.send(`List: ${data[major].join(', ')}`);
         }
       })
       .catch(() => {

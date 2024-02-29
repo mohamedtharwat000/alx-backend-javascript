@@ -1,6 +1,6 @@
 class AppController {
   static getHomepage(req, res) {
-    res.status(200).send('Hello Holberton School!');
+    res.send('Hello Holberton School!');
   }
 }
 
