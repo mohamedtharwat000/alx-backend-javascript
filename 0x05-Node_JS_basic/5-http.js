@@ -28,18 +28,20 @@ async function countStudents(path) {
 const app = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
 
-  if (req.url === '/') res.end('Hello Holberton School!');
+  if (req.url === '/') {
+    return res.end('Hello Holberton School!');
+  }
 
   if (req.url === '/students') {
-    countStudents(process.argv[2])
-      .then(
-        (data) => res.end(data),
-        () => {
-          res.statusCode = 404;
-          res.end('Cannot load the database');
-        },
-      );
+    return countStudents(process.argv[2])
+      .then((data) => {
+        res.end(data);
+      })
+      .catch((error) => {
+        res.end(`This is the list of our students\n${error.message}`);
+      });
   }
+  return res.end();
 });
 
 app.listen(1245, null);
