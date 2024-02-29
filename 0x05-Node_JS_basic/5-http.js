@@ -32,7 +32,13 @@ const app = http.createServer((req, res) => {
 
   if (req.url === '/students') {
     countStudents(process.argv[2])
-      .then((data) => res.end(data), (err) => res.end(err.message));
+      .then(
+        (data) => res.end(data),
+        (err) => {
+          res.statusCode = 404;
+          res.end(err.message);
+        },
+      );
   }
 });
 
