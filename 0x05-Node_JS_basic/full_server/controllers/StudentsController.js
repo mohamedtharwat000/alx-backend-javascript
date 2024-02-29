@@ -25,13 +25,16 @@ class StudentsController {
 
   static async getAllStudentsByMajor(req, res) {
     const { major } = req.params;
-    if (major !== 'CS' && major !== 'SWE') {
-      res.status(500).send('Major parameter must be CS or SWE');
-    }
 
     readDatabase(process.argv[2])
       .then((data) => {
-        if (data[major]) res.send(`List: ${data[major].join(', ')}`);
+        if (data[major]) {
+          res.send(`List: ${data[major].join(', ')}`);
+        } else {
+          res
+            .status(500)
+            .send(`Major parameter must be ${Object.keys(data).join(' or ')}`);
+        }
       })
       .catch((err) => {
         res.status(500).send(err.message);
